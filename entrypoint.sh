@@ -1,16 +1,14 @@
-#!/bin/sh -e
+#!/bin/sh
 
-DATACENTERS_LIST="AMS2 AMS3 BLR1 FRA1 LON1 NYC1 NYC2 NYC3 SFO1 SFO2 SGP1 TOR1"
+DATACENTERS="AMS2 AMS3 BLR1 FRA1 LON1 NYC1 NYC2 NYC3 SFO1 SFO2 SGP1 TOR1"
 
 #
 # Validate environment variables
 #
-
 REGION="${DATACENTER_REGION}"
-if ! echo -n " $DATACENTERS_LIST " | grep -q " ${REGION} "; then
-	echo "ERROR: Incorrect datacenter region '$REGION'"
-	echo "Use one of the following: $DATACENTERS_LIST"
-	exit 1
+if ! echo -n " $DATACENTERS" | grep -q " ${REGION} "; then
+    echo "WARNING: Unknown datacenter region '$REGION'."
+    echo "> List of known datacenters: $DATACENTERS"
 fi
 
 #
